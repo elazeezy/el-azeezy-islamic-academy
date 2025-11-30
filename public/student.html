@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Student Portal • El-Azeezy Islamic Academy</title>
+
+  <!-- Main site styles -->
+  <link rel="stylesheet" href="styles.css"/>
+  <!-- Student portal styles -->
+  <link rel="stylesheet" href="student.css"/>
+</head>
+<body class="student-body">
+  <div class="student-bg">
+    <header class="site-header student-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="logo-placeholder" aria-hidden="true"></div>
+          <span class="brand-name">El-Azeezy Islamic Academy</span>
+        </div>
+        <nav class="nav">
+          <a class="nav-link" href="/">← Back to Website</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="student-shell">
+      <!-- ===== LOGIN VIEW ===== -->
+      <section id="studentLogin" class="card login-card soft-elevate">
+        <h1 class="card-title">Student Login</h1>
+        <p class="card-desc">
+          Enter your name to access your dashboard. <br/>
+          (We’ll add full login with accounts later insha’Allah.)
+        </p>
+        <form id="studentLoginForm" class="login-form">
+          <label>
+            <span>Full Name</span>
+            <input id="studentNameInput" name="fullName" type="text" required placeholder="e.g. Amina Yusuf"/>
+          </label>
+          <label>
+            <span>WhatsApp (optional)</span>
+            <input id="studentPhoneInput" name="whatsapp" type="text" placeholder="e.g. 23480XXXXXXX"/>
+          </label>
+          <button class="btn-primary wide" type="submit">Enter Dashboard</button>
+        </form>
+        <p id="studentLoginError" class="form-error"></p>
+      </section>
+
+      <!-- ===== DASHBOARD VIEW ===== -->
+      <section id="studentDashboard" class="dashboard" hidden>
+        <aside class="dash-aside soft-elevate">
+          <div class="user-box">
+            <div class="avatar-circle" aria-hidden="true"></div>
+            <div>
+              <div class="hello">Salaam,</div>
+              <div id="studentName" class="username">Student</div>
+            </div>
+          </div>
+
+          <nav class="dash-nav">
+            <button data-view="home" class="dash-link active">Dashboard</button>
+            <button data-view="classes" class="dash-link">Classes</button>
+            <button data-view="attendance" class="dash-link">Attendance</button>
+            <button data-view="syllabus" class="dash-link">Syllabus</button>
+            <button data-view="profile" class="dash-link">Profile</button>
+          </nav>
+
+          <div class="aside-footer">
+            <button id="studentLogoutBtn" class="btn-secondary small">Logout</button>
+            <p class="aside-note">Stay consistent, even if it’s small. 📖</p>
+          </div>
+        </aside>
+
+        <section class="dash-main"> 
+          <!-- HOME -->
+          <div id="view-home" class="view active">
+            <div class="grid-2">
+              <div class="card next-class soft-elevate fade-in">
+                <h2 class="card-title">Your Next Class</h2>
+                <p class="muted">
+                  Countdown is a demo for now. We’ll load real class times and links soon insha’Allah.
+                </p>
+                <div class="countdown" id="countdown">Loading…</div>
+    <div id="nextClassLabel" class="muted"></div>
+    <a id="joinClassBtn"
+    class="btn-primary"
+    href="https://meet.google.com/your-link"
+     target="_blank"
+      rel="noopener">
+      Join Class
+      </a>
+
+              </div>
+
+              <div class="card quick-links soft-elevate fade-in">
+                <h2 class="card-title">Quick Links</h2>
+                <ul class="list">
+                  <li><a href="#classes">Class Schedule (coming soon)</a></li>
+                  <li><a href="#attendance">Attendance (coming soon)</a></li>
+                  <li><a href="#syllabus">Syllabus (coming soon)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CLASSES -->
+          <div id="view-classes" class="view">
+            <div class="card soft-elevate fade-in">
+              <h2 class="card-title">Classes</h2>
+              <p class="muted">
+                Here you’ll see your Qur’an, Tajwīd, Arabic and Islamic Studies classes,
+                with timings and links.
+              </p>
+              <div class="placeholder-box">
+                No classes loaded yet. We’ll connect this to your real schedule soon.
+              </div>
+            </div>
+          </div>
+
+          <!-- ATTENDANCE -->
+          <div id="view-attendance" class="view">
+            <div class="card soft-elevate fade-in">
+              <h2 class="card-title">Attendance</h2>
+              <div class="placeholder-box">
+                Attendance history coming soon.
+              </div>
+            </div>
+          </div>
+
+          <!-- SYLLABUS -->
+          <div id="view-syllabus" class="view">
+            <div class="card soft-elevate fade-in">
+              <h2 class="card-title">Syllabus</h2>
+              <div class="placeholder-box">
+                We’ll show your syllabi here (PDFs, topics, surahs, etc).
+              </div>
+            </div>
+          </div>
+
+          <!-- PROFILE -->
+          <div id="view-profile" class="view">
+            <div class="card soft-elevate fade-in">
+              <h2 class="card-title">Profile</h2>
+              <div id="profileBox" class="placeholder-box"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="student.js"></script>
+</body>
+</html>

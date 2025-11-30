@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "fullName": "Amina Farayola",
+    "whatsapp": "+447471695161",
+    "courses": [
+      {
+        "courseId": "quran-recitation",
+        "courseName": "Qur’an Recitation & Tajwīd",
+        "slotId": "slot1"
+      },
+      {
+        "courseId": "quran-hifz",
+        "courseName": "Qur’an Memorization (Hifz Program)",
+        "slotId": "slot1"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "fullName": "Ahmad Sule",
+    "whatsapp": "+2348012345678",
+    "courses": [
+      {
+        "courseId": "quran-hifz",
+        "courseName": "Qur’an Memorization (Hifz Program)",
+        "slotId": "slot2"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "fullName": "Sarah Khan",
+    "whatsapp": "+447400000000",
+    "courses": [
+      {
+        "courseId": "arabic",
+          "courseName": "Arabic Language",
+          "slotId": "slot3"
+      },
+      {
+        "courseId": "islamic-studies",
+        "courseName": "Islamic Studies",
+        "slotId": "slot3"
+      }
+    ]
+  }
+]

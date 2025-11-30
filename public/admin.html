@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — Registrations</title>
+
+  <!-- Reuse your site styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Admin-only light touches */
+    .admin-wrap { width: min(1120px, 92%); margin: 2rem auto; }
+    .admin-head { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem; }
+    .admin-title { font-weight:800; font-size:1.4rem; color:#0f2644; }
+    .admin-filters { display:flex; gap:.6rem; flex-wrap:wrap; }
+    .admin-filters input, .admin-filters select { padding:.55rem .7rem; border:1.2px solid rgba(148,163,184,.8); border-radius:8px; font-size:.95rem; background:#fff; }
+    .admin-actions { display:flex; gap:.6rem; }
+    .btn-secondary { padding:.6rem .9rem; border-radius:10px; border:1px solid rgba(148,163,184,.6); background:#fff; font-weight:600; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+    .admin-card { background:#fff; border:1px solid rgba(148,163,184,.35); border-radius:12px; box-shadow:0 10px 25px rgba(15,23,42,.08); overflow:auto; }
+    table { width:100%; border-collapse:collapse; }
+    thead th { position:sticky; top:0; background:#f4f7ff; color:#0b1730; text-align:left; font-size:.9rem; padding:.8rem .9rem; border-bottom:1px solid rgba(148,163,184,.45); cursor:pointer; }
+    tbody td { padding:.8rem .9rem; border-bottom:1px solid rgba(148,163,184,.25); font-size:.92rem; }
+    tbody tr:hover { background:#f9fbff; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.85rem; color:#475569; }
+    .pill { display:inline-block; padding:.25rem .5rem; border-radius:999px; background:#e4eefc; border:1px solid rgba(24,78,146,.25); margin:.1rem .2rem .1rem 0; font-size:.8rem; }
+    .muted { color:#64748b; font-size:.85rem; }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <div class="admin-head">
+      <div class="admin-title">Admin • Registrations</div>
+      <div class="admin-actions">
+        <a class="btn-secondary" href="/">← Back to site</a>
+        <button id="exportCsvBtn" class="btn-secondary">Export CSV</button>
+      </div>
+    </div>
+
+    <div class="admin-stats">
+  <div class="admin-stat-box">
+    <span class="label">Total registrations</span>
+    <span class="value" id="statTotalRegistrations">0</span>
+  </div>
+  <div class="admin-stat-box">
+    <span class="label">Unique students</span>
+    <span class="value" id="statUniqueStudents">0</span>
+  </div>
+</div>
+
+
+    <div class="admin-filters">
+      <input id="q" type="text" placeholder="Search name / email / phone…" />
+      <select id="courseFilter">
+        <option value="">Filter by course</option>
+      </select>
+      <select id="levelFilter">
+        <option value="">Filter by level</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
+      <select id="sortBy">
+        <option value="createdAt_desc">Newest first</option>
+        <option value="createdAt_asc">Oldest first</option>
+        <option value="name_asc">Name A–Z</option>
+        <option value="name_desc">Name Z–A</option>
+      </select>
+    </div>
+
+    <div class="admin-card">
+      <table id="regTable">
+        <thead>
+          <tr>
+            <th data-sort="createdAt">Date</th>
+            <th data-sort="fullName">Name</th>
+            <th>WhatsApp</th>
+            <th>Email</th>
+            <th>Country</th>
+            <th>Time</th>
+            <th>Level</th>
+            <th>Courses</th>
+            <th>ID</th>
+          </tr>
+        </thead>
+        <tbody id="regTbody">
+          <tr><td colspan="9" class="muted">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted" style="margin-top:.7rem;">
+      No login yet — this is a local admin preview while we build auth later.
+    </p>
+  </div> 
+
+  <div class="admin-actions">
+  <a class="btn-secondary" href="/">← Back to site</a>
+  <button id="exportCsvBtn" class="btn-secondary">Export CSV</button>
+  <button id="logoutBtn" class="btn-secondary">Logout</button>
+</div>
+
+
+  <script src="admin.js"></script>
+</body>
+</html>
+
+
+ 

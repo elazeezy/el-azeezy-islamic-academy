@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .login-wrap{width:min(420px,92%);margin:8vh auto;background:#fff;border:1px solid rgba(148,163,184,.35);
+      border-radius:14px;box-shadow:0 18px 35px rgba(15,23,42,.1);padding:1.5rem 1.25rem}
+    .login-title{font-size:1.25rem;font-weight:800;color:#0f2644;margin-bottom:.75rem}
+    .login-desc{color:#64748b;font-size:.95rem;margin-bottom:1.2rem}
+    .form-row{display:flex;gap:.6rem;align-items:center}
+    input[type=password]{flex:1;padding:.8rem .9rem;border:1.2px solid rgba(148,163,184,.8);border-radius:10px;font-size:1rem}
+    button{padding:.85rem 1rem;border-radius:12px;border:none;background:#e0b34b;font-weight:800}
+    .err{color:#b42318;font-size:.9rem;margin-top:.8rem;min-height:1.2rem}
+    .back{display:inline-block;margin-top:1rem;color:#244673;text-decoration:underline}
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-title">Admin PIN</div>
+    <div class="login-desc">Enter your private PIN to open the admin dashboard.</div>
+    <form id="adminLoginForm" class="form-row">
+      <input id="pin" name="pin" type="password" placeholder="Enter PIN" required minlength="4" />
+      <button type="submit">Unlock</button>
+    </form>
+    <div id="loginError" class="err"></div>
+    <a class="back" href="/">← Back to site</a>
+  </div>
+
+  <script src="admin-login.js"></script>
+</body>
+</html>

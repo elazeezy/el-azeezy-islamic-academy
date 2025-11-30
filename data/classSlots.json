@@ -1,0 +1,29 @@
+[
+  {
+    "id": "slot1",
+    "name": "Evening Tajwid",
+    "days": ["Saturday", "Sunday", "Monday"],
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
+  },
+  {
+    "id": "slot2",
+    "name": "Weekend Hifz (WAT)",
+    "days": ["Saturday", "Sunday"],
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "timezone": "Africa/Lagos",
+    "meetLink": "https://meet.google.com/demo-weekend-hifz"
+  },
+  {
+    "id": "slot3",
+    "name": "Weekday Arabic Evening (WAT)",
+    "days": ["Tuesday", "Thursday"],
+    "startTime": "20:30",
+    "endTime": "21:30",
+    "timezone": "Africa/Lagos",
+    "meetLink": "https://meet.google.com/demo-arabic-evening"
+  }
+]

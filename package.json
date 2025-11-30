@@ -1,0 +1,19 @@
+{
+  "name": "el-azeezy-academy",
+  "version": "1.0.0",
+  "description": "El-Azeezy Islamic Academy - website + backend",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.19.2",
+    "nodemailer": "^7.0.11"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
