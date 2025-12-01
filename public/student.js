@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Handle login form
-  if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
+    if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (loginErr) loginErr.textContent = "";
 
@@ -65,12 +65,43 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const s = { fullName, phone, joinedAt: new Date().toISOString() };
-      saveStudentToStorage(s);
-      showDashboard(s);
-      loadSchedule(fullName);
+      try {
+        // Get list of students from the server
+        const students = await fetchJson("/api/students");
+
+        // Find a student with matching full name (case-insensitive)
+        const student = students.find(
+          (st) =>
+            st.fullName.trim().toLowerCase() === fullName.trim().toLowerCase()
+        );
+
+        if (!student) {
+          if (loginErr) {
+            loginErr.textContent =
+              "We couldn't find your name in the system. Please go back to the main website and book your free assessment.";
+          }
+          return;
+        }
+
+        // Build the student object we keep on the frontend
+        const s = {
+          ...student,
+          phone: student.whatsapp || phone || "",
+          joinedAt: new Date().toISOString(),
+        };
+
+        saveStudentToStorage(s);
+        showDashboard(s);
+        loadSchedule(s.fullName);
+      } catch (err) {
+        console.error("Error during login:", err);
+        if (loginErr) {
+          loginErr.textContent = "Could not check your account. Please try again.";
+        }
+      }
     });
   }
+
 
   // Logout
   if (logoutBtn) {
