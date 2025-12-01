@@ -281,28 +281,24 @@ if (readyBox && payBtn && paymentDetails) {
 // PAYSTACK LOGIC (UPDATED)
 // =========================
 
-// Decide which currency to use based on country
+// =========================
+// PAYSTACK LOGIC (FORCE NGN)
+// =========================
+
+// For now, ALWAYS charge in Naira (NGN).
+// You can still DISPLAY prices in £/$ on the site,
+// but Paystack will only collect NGN until multi-currency is enabled.
 function determineCurrency(countryValue) {
-  if (!countryValue) return "NGN"; // safe default
-
-  const c = countryValue.toLowerCase();
-
-  // Nigerians → NGN
-  if (c.includes("nigeria") || c.includes("ng")) return "NGN";
-
-  // Everyone else → USD  (only works if USD is enabled on your Paystack account)
-  // If you STILL get "Currency not supported by merchant",
-  // change the next line to:  return "NGN";
-  return "USD";
+  return "NGN";
 }
 
-// Get amount for a plan in the chosen currency
+// Get amount for a plan in NGN only
 function getAmountForPlan(planCode, currency) {
   const plan = PLAN_PRICING[planCode];
   if (!plan) return 0;
 
-  // PLAN_PRICING = { standard: { ngn, usd }, ... }
-  return currency === "NGN" ? plan.ngn : plan.usd;
+  // We ignore the currency argument for now and always use NGN price
+  return plan.ngn;
 }
 
 function payWithPaystack() {
@@ -351,8 +347,8 @@ function payWithPaystack() {
   }
 
   // Decide currency + amount
-  const currency = determineCurrency(country);
-  const amount = getAmountForPlan(planCode, currency);
+  const currency = determineCurrency(country); // will always be "NGN"
+  const amount = getAmountForPlan(planCode, currency); // will always use NGN price
 
   if (!amount || amount <= 0) {
     alert("Invalid amount for this plan. Please contact admin.");
@@ -363,14 +359,14 @@ function payWithPaystack() {
     return;
   }
 
-  // Convert to minor units (kobo / cents)
+  // Convert to minor units (kobo)
   const amountMinor = Math.round(amount * 100);
 
   const handler = PaystackPop.setup({
     key: PAYSTACK_PUBLIC_KEY,
     email,
     amount: amountMinor,
-    currency,
+    currency, // "NGN"
     ref: "ELZ_" + Date.now() + "_" + Math.floor(Math.random() * 10000),
     metadata: {
       custom_fields: [
@@ -398,7 +394,6 @@ function payWithPaystack() {
 
   handler.openIframe();
 }
-
 
 // PERFECT MOBILE MENU (smooth + closes properly)
 const mobileToggle = document.querySelector('.mobile-menu-toggle');
