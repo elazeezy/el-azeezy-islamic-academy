@@ -5,6 +5,9 @@
 // =========================
 const PAYSTACK_PUBLIC_KEY = "pk_live_4546ca5d80bae452b25e1d6eb1fa1ffb4f14b475";
 
+// Put YOUR WhatsApp number here (no +, no spaces, in international format)
+const USTAZ_WHATSAPP = "2349031476912"; // example: +234 903 147 6912 -> "2349031476912"
+
 const PLAN_PRICING = {
   standard: { ngn: 29999, usd: 29.99 },
   premium: { ngn: 39999, usd: 39.99 },
@@ -185,7 +188,7 @@ if (form) {
       paymentPlan: "",
     };
 
-    try {
+        try {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -197,7 +200,30 @@ if (form) {
         return;
       }
 
-      // SUCCESS: Clear form but keep email/whatsapp/country visible
+      // =========================
+      // SUCCESS: show message + WhatsApp redirect
+      // =========================
+
+      // Build WhatsApp message with key details
+      const waMessage = `
+Assalamu alaikum Ustaz,
+I just booked a FREE assessment from the website.
+
+Primary name: ${fullName || "-"}
+Who is this for: ${whoFor || "-"}
+WhatsApp: ${whatsapp || "-"}
+Country: ${country || "-"}
+Program(s): ${coursesArr.length ? coursesArr.join(", ") : "-"}
+Goals / notes: ${goals || "-"}
+
+Please confirm my assessment time in shaa Allah.
+      `.trim();
+
+      const waLink = `https://wa.me/${USTAZ_WHATSAPP}?text=${encodeURIComponent(
+        waMessage
+      )}`;
+
+      // Clear form (except contact details we saved in savedUserData)
       document.getElementById("whoFor").value = "";
       document.getElementById("childNames").value = "";
       document.getElementById("adultName").value = "";
@@ -208,13 +234,25 @@ if (form) {
       selectedCourses.clear();
       updateSelectedCourseLists();
 
+      // Show success box
       successBox.hidden = false;
       successBox.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // Prompt user to go to WhatsApp
+      const goToWhatsApp = confirm(
+        "Alhamdulillah! Your free assessment request has been received.\n\n" +
+        "Click OK to open WhatsApp and send your details to Ustaz now."
+      );
+
+      if (goToWhatsApp) {
+        window.location.href = waLink;
+      }
 
     } catch (err) {
       console.error(err);
       alert("Network error. Please check your connection and try again.");
     }
+
   });
 }
 
