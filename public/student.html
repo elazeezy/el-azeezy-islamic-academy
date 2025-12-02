@@ -26,28 +26,43 @@
 
     <main class="student-shell">
       <!-- ===== LOGIN VIEW ===== -->
-      <section id="studentLogin" class="card login-card soft-elevate">
-        <h1 class="card-title">Student Login</h1>
-        <p class="card-desc">
-          Enter your name to access your dashboard. <br/>
-          (We’ll add full login with accounts later insha’Allah.)
-        </p>
-        <form id="studentLoginForm" class="login-form">
-          <label>
-            <span>Full Name</span>
-            <input id="studentNameInput" name="fullName" type="text" required placeholder="e.g. Amina Yusuf"/>
-          </label>
-          <label>
-            <span>WhatsApp (optional)</span>
-            <input id="studentPhoneInput" name="whatsapp" type="text" placeholder="e.g. 23480XXXXXXX"/>
-          </label>
-          <button class="btn-primary wide" type="submit">Enter Dashboard</button>
-        </form>
-        <p id="studentLoginError" class="form-error"></p>
-      </section>
+      <section id="studentLogin" class="login-wrapper">
 
+  <div class="login-hero-text">
+    <h1>Welcome to Your Learning Portal</h1>
+    <p>Continue your Qur’an journey with calm, clarity and excellence.</p>
+  </div>
+
+  <div class="login-glass-card">
+    <h2>Student Login</h2>
+    <p class="login-sub">Enter your details to access your dashboard.</p>
+
+    <form id="studentLoginForm" class="login-form">
+      <label>
+        <span>Full Name</span>
+        <input id="studentNameInput" name="fullName" type="text" required placeholder="e.g. Amina Yusuf">
+      </label>
+
+      <label>
+        <span>WhatsApp (optional)</span>
+        <input id="studentPhoneInput" name="whatsapp" type="text" placeholder="+23480XXXXXXX">
+      </label>
+
+      <button class="login-btn" type="submit">
+        Enter My Dashboard →
+      </button>
+    </form>
+
+    <p id="studentLoginError" class="login-error"></p>
+
+    <div class="trust-badges">
+      <p>Trusted by families in Nigeria • UK • Canada • Malaysia</p>
+    </div>
+  </div>
+
+</section>
       <!-- ===== DASHBOARD VIEW ===== -->
-      <section id="studentDashboard" class="dashboard" hidden>
+     <section id="studentDashboard" class="dashboard">
         <aside class="dash-aside soft-elevate">
           <div class="user-box">
             <div class="avatar-circle" aria-hidden="true"></div>
