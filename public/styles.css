@@ -1202,3 +1202,249 @@ a:hover {
   margin-top: 0.7rem;
   font-size: 0.9rem;
 }
+
+#studentLogin {
+  min-height: 100vh;
+}
+
+/* ======================================
+   PREMIUM LOGIN PAGE (NEW DESIGN)
+   ====================================== */
+
+.login-wrapper {
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.04) 0%, transparent 50%),
+    linear-gradient(140deg, #071322, #0e2347 55%, #04101f);
+}
+
+/* Hero text above card */
+.login-hero-text h1 {
+  font-size: 2.1rem;
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: .3rem;
+}
+
+.login-hero-text p {
+  color: #bcd0e7;
+  font-size: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+/* Gorgeous glass card */
+.login-glass-card {
+  width: min(440px, 90%);
+  padding: 2rem 1.8rem;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  animation: fadeSlideIn .9s ease-out;
+}
+
+.login-glass-card h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: .4rem;
+}
+
+.login-sub {
+  color: #d7e0ea;
+  margin-bottom: 1.5rem;
+}
+
+/* Inputs */
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-form label span {
+  color: #f1f5f9;
+  font-weight: 600;
+  margin-bottom: .25rem;
+  display: block;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  outline: none;
+}
+
+.login-form input:focus {
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.7);
+}
+
+/* Button */
+.login-btn {
+  margin-top: .7rem;
+  padding: 0.9rem;
+  width: 100%;
+  background: linear-gradient(135deg, #facc15, #eab308);
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  color: #1f2937;
+  letter-spacing: 0.01em;
+  box-shadow: 0 12px 25px rgba(234, 179, 8, 0.35);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.login-btn:hover {
+  filter: brightness(1.07);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(234, 179, 8, 0.45);
+}
+
+
+/* Error message */
+.login-error {
+  color: #fecaca;
+  margin-top: 0.8rem;
+  min-height: 1rem;
+}
+
+.trust-badges {      
+  margin-top: 1.35rem;
+  font-size: 0.85rem;
+  color: #d6e2ec;
+  opacity: .9;
+  text-align: center;
+}
+
+
+
+/* ======================================
+   PREMIUM LOGIN PAGE (CENTERED + ANIMATED)
+   ====================================== */
+
+.login-wrapper {
+  min-height: 100vh;
+  padding: 5rem 1rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* center horizontally */
+  justify-content: flex-start;
+  text-align: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.04) 0%, transparent 50%),
+    linear-gradient(140deg, #071322, #0e2347 55%, #04101f);
+}
+
+/* Keep hero text narrow and centered */
+.login-hero-text {
+  max-width: 650px;
+  margin: 0 auto 2.4rem;
+}
+
+.login-hero-text h1 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: .35rem;
+}
+
+.login-hero-text p {
+  color: #bcd0e7;
+  font-size: 1rem;
+}
+
+/* Glass card – centered */
+.login-glass-card {
+  width: min(440px, 90%);
+  margin: 0 auto;                         /* <-- force center */
+  padding: 2rem 1.8rem;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(9, 16, 32, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.8);
+  position: relative;
+  overflow: hidden;
+  animation: loginSlideIn 0.85s ease-out forwards;
+}
+
+/* subtle shine effect on top of card */
+.login-glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(255,255,255,0.18) 0, transparent 55%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.login-glass-card h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: .45rem;
+}
+
+.login-sub {
+  color: #cbd5f5;
+  margin-bottom: 1.6rem;
+}
+
+/* Slide-in animation */
+@keyframes loginSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.login-form {
+  display: grid;
+  gap: 1rem;
+  text-align: left;
+}
+
+.login-form label span {
+  color: #e5edf7;                 /* brighter label */
+  font-weight: 600;
+  margin-bottom: .25rem;
+  display: block;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(248, 250, 252, 0.98);
+  font-size: 1rem;
+  outline: none;
+  color: #0f172a;
+}
+
+.login-form input::placeholder {
+  color: #64748b;
+}
+
+.login-form input:focus {
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.8);
+}
+

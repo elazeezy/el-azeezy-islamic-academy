@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginErr  = document.getElementById("studentLoginError");
   const logoutBtn = document.getElementById("studentLogoutBtn");
 
+    // Initial state: show login, hide dashboard.
+  // We will override this below if a saved student exists.
+  if (loginView) loginView.style.display = "block";
+  if (dashView) dashView.style.display = "none";
+
+
   const countdownEl = document.getElementById("countdown");
   const nextClassLabelEl = document.getElementById("nextClassLabel");
   const profileBox = document.getElementById("profileBox");
@@ -37,20 +43,39 @@ document.addEventListener("DOMContentLoaded", () => {
   function clearStudentFromStorage() {
     localStorage.removeItem(LS_KEY);
   }
+   function showLogin() {
+    if (loginView) {
+      loginView.style.display = "block";
+    }
+    if (dashView) {
+      dashView.style.display = "none";
+    }
+  // Always scroll to the top so dashboard never shows behind
+  window.scrollTo({ top: 0, behavior: "instant" });
 
-  function showLogin() {
-    loginView.hidden = false;
-    dashView.hidden = true;
+
+    // If we have a saved student, pre-fill the fields
+    const saved = loadStudentFromStorage();
+    if (saved) {
+      const nameInput = document.getElementById("studentNameInput");
+      const phoneInput = document.getElementById("studentPhoneInput");
+      if (nameInput && saved.fullName) nameInput.value = saved.fullName;
+      if (phoneInput && saved.phone) phoneInput.value = saved.phone;
+    }
   }
 
-  function showDashboard(s) {
-    if (nameEl) nameEl.textContent = s.fullName;
-    loginView.hidden = true;
-    dashView.hidden = false;
-    initViews();
-    renderProfile(s);
-  }
-
+  
+function showDashboard(s) {
+    if (nameEl) nameEl.textContent = s.fullName || "Student";
+    if (loginView) {
+      loginView.style.display = "none";
+    }
+    if (dashView) {
+      dashView.style.display = "grid";
+    }
+  initViews();
+  renderProfile(s);
+}
   // Handle login form
     if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
