@@ -12,37 +12,45 @@
       {
         "courseId": "quran-hifz",
         "courseName": "Qur’an Memorization (Hifz Program)",
-        "slotId": "slot1"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "fullName": "Ahmad Sule",
-    "whatsapp": "+2348012345678",
-    "courses": [
-      {
-        "courseId": "quran-hifz",
-        "courseName": "Qur’an Memorization (Hifz Program)",
         "slotId": "slot2"
       }
     ]
-  },
-  {
-    "id": 3,
-    "fullName": "Sarah Khan",
-    "whatsapp": "+447400000000",
+  } ,
+
+  { 
+    "id": 2,
+    "fullName": "Aman Akinde",
+    "whatsapp": "+2347037142736" ,
     "courses": [
-      {
-        "courseId": "arabic",
-          "courseName": "Arabic Language",
-          "slotId": "slot3"
+      { 
+        "courseId": "quran-MEMORIZATION" , 
+        "courseName": "Qur’an memorization & Tafseer",
+        "slotId": "slot3"
       },
       {
         "courseId": "islamic-studies",
-        "courseName": "Islamic Studies",
-        "slotId": "slot3"
+        "courseName": "islamic Studies and tajweed",
+        "slotId": "slot4"
+      }
+    ]
+  } ,
+  
+{ 
+    "id": 3,
+    "fullName": "Ameerah Akinde",
+    "whatsapp": "+2347037142736" ,
+    "courses": [
+      { 
+        "courseId": "quran-MEMORIZATION" , 
+        "courseName": "Qur’an memorization & Tafseer",
+        "slotId": "slot5"
+      },
+      {
+        "courseId": "islamic-studies",
+        "courseName": "islamic Studies and tajweed",
+        "slotId": "slot6"
       }
     ]
   }
+
 ]

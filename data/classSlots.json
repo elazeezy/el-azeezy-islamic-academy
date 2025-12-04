@@ -1,29 +1,66 @@
 [
   {
-    "id": "slot1",
-    "name": "Evening Tajwid",
-    "days": ["Saturday", "Sunday", "Monday"],
+    "id": "slot2",
+    "name": "Weekdays Hifz (UTC+0)",
+    "days": ["Monday", "Tuesday"],
     "startTime": "14:00",
-    "endTime": "16:00",
+    "endTime": "15:00",
     "timezone": "Europe/London",
     "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
   },
+  
+  
   {
-    "id": "slot2",
-    "name": "Weekend Hifz (WAT)",
+    "id": "slot1",
+    "name": "Evening Tajwid (UTC+0)" ,
     "days": ["Saturday", "Sunday"],
-    "startTime": "10:00",
-    "endTime": "11:00",
-    "timezone": "Africa/Lagos",
-    "meetLink": "https://meet.google.com/demo-weekend-hifz"
+    "startTime": "14:00",
+    "endTime": "15:00",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
   },
+
+ 
   {
     "id": "slot3",
-    "name": "Weekday Arabic Evening (WAT)",
-    "days": ["Tuesday", "Thursday"],
-    "startTime": "20:30",
-    "endTime": "21:30",
-    "timezone": "Africa/Lagos",
-    "meetLink": "https://meet.google.com/demo-arabic-evening"
+    "name": "weekend Hifz (UTC+0)",
+    "days": ["Saturday", "Sunday"],
+    "startTime": "10:00",
+    "endTime": "11:30",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
+  },
+
+  {
+    "id": "slot5",
+    "name": "weekend Hifz (UTC+0)",
+    "days": ["Saturday", "Sunday"],
+    "startTime": "11:30",
+    "endTime": "13:00",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
+  },
+
+  {
+    "id": "slot4",
+    "name": "weekdays islamic (UTC+0)",
+    "days": ["Tuesday"],
+    "startTime": "16:00",
+    "endTime": "17:30",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
+  },
+
+   {
+    "id": "slot6",
+    "name": "weekdays islamic (UTC+0)",
+    "days": ["Tuesday"],
+    "startTime": "16:00",
+    "endTime": "17:30",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
   }
+
+
+
 ]
