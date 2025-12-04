@@ -12,7 +12,24 @@
 </head>
 <body class="student-body">
   <div class="student-bg">
-    <header class="site-header student-header">
+    <header class="site-header student-header glass-header">
+      <button class="notif-bell" id="notifBell" aria-label="Notifications">
+  <span class="bell-icon">🔔</span>
+  <span class="notif-dot" id="notifDot"></span>
+</button>
+
+<div class="notif-panel card-glass" id="notifPanel" hidden>
+  <div class="notif-header">
+    <span>Notifications</span>
+    <button class="notif-clear" id="notifClearBtn">Mark all read</button>
+  </div>
+  <ul class="notif-list" id="notifList">
+    <li>⏱ Your next class is coming up soon insha’Allah.</li>
+    <li>📖 Remember to revise yesterday’s pages.</li>
+    <li>💛 JazakAllahu khayran for staying consistent.</li>
+  </ul>
+</div>
+
       <div class="container header-inner">
         <div class="brand">
           <div class="logo-placeholder" aria-hidden="true"></div>
@@ -86,82 +103,192 @@
           </div>
         </aside>
 
-        <section class="dash-main"> 
-          <!-- HOME -->
-          <div id="view-home" class="view active">
-            <div class="grid-2">
-              <div class="card next-class soft-elevate fade-in">
-                <h2 class="card-title">Your Next Class</h2>
-                <p class="muted">
-                  Countdown is a demo for now. We’ll load real class times and links soon insha’Allah.
-                </p>
-                <div class="countdown" id="countdown">Loading…</div>
-    <div id="nextClassLabel" class="muted"></div>
-    <a id="joinClassBtn"
-    class="btn-primary"
-    href="https://meet.google.com/your-link"
-     target="_blank"
-      rel="noopener">
-      Join Class
-      </a>
+        <section class="dash-main">
+  <!-- HOME -->
+ <div id="view-home" class="view active">
+  <!-- BADGES / ACHIEVEMENTS ROW -->
+  <div class="home-badges fade-in" id="badgeRow">
+    <span class="badge-pill badge-primary">Consistent learner 🌙</span>
+    <span class="badge-pill badge-soft">Tajwīd in progress</span>
+    <span class="badge-pill badge-soft">Allah will raise by Qur’an 📖</span>
+  </div>
 
-              </div>
+  <!-- MAIN GRID -->
+  <div class="grid-2">
+    <!-- NEXT CLASS CARD -->
+    <div class="card next-class card-glass fade-in">
+      <h2 class="card-title">Your Next Class</h2>
+      <p class="muted">
+        Countdown is a demo for now. We’ll load real class times and links soon insha’Allah.
+      </p>
+      <div class="countdown" id="countdown">Loading…</div>
+      <div id="nextClassLabel" class="muted"></div>
+      <button id="joinClassBtn" class="btn-primary">
+        Join Class
+      </button>
+    </div>
 
-              <div class="card quick-links soft-elevate fade-in">
-                <h2 class="card-title">Quick Links</h2>
-                <ul class="list">
-                  <li><a href="#classes">Class Schedule (coming soon)</a></li>
-                  <li><a href="#attendance">Attendance (coming soon)</a></li>
-                  <li><a href="#syllabus">Syllabus (coming soon)</a></li>
-                </ul>
-              </div>
+    <!-- QUICK LINKS + SMALL FOCUS CARDS -->
+    <div class="card quick-links card-glass fade-in">
+      <h2 class="card-title">Quick Links</h2>
+      <ul class="quick-list">
+        <li><a href="#classes">Class Schedule (coming soon)</a></li>
+        <li><a href="#attendance">Attendance (coming soon)</a></li>
+        <li><a href="#syllabus">Syllabus (coming soon)</a></li>
+      </ul>
+
+      <div class="mini-goals-grid">
+        <div class="mini-card-glass">
+          <div class="mini-label">Goal</div>
+          <div class="mini-title">3x / week</div>
+          <p class="mini-text">Small but consistent.</p>
+        </div>
+        <div class="mini-card-glass">
+          <div class="mini-label">Focus</div>
+          <div class="mini-title">Tajwīd</div>
+          <p class="mini-text">Perfect your sounds.</p>
+        </div>
+        <div class="mini-card-glass">
+          <div class="mini-label">Reminder</div>
+          <div class="mini-title">Be present</div>
+          <p class="mini-text">Turn off distractions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODAY'S TASK CARD -->
+  <div class="today-task-row fade-in">
+    <div class="card today-task card-glass" id="todayTaskCard">
+      <div class="today-task-left">
+        <div class="today-task-label">Today’s Qur’an Task</div>
+        <div class="today-task-main" id="todayTaskMain">
+          Recite 10 ayāt from your current surah.
+        </div>
+        <p class="today-task-sub" id="todayTaskSub">
+          Keep it light but consistent. Even 10 focused minutes is powerful.
+        </p>
+      </div>
+      <div class="today-task-right">
+        <div class="task-dot"></div>
+        <span class="task-status">Planned</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- CLASSES -->
+  <div id="view-classes" class="view">
+    <div class="card soft-elevate fade-in">
+      <h2 class="card-title">Classes</h2>
+      <p class="muted">
+        Once your schedule is confirmed, your live classes will appear here,
+        with clear days, times and links.
+      </p>
+
+      <div class="class-layout">
+        <div class="class-empty">
+          <p class="class-empty-title">Your timetable isn’t set yet</p>
+          <p class="muted">
+            After admin assigns your slots, you’ll see a table like this with your Qur’an,
+            Hifz, Arabic and Islamic Studies sessions.
+          </p>
+
+          <div class="class-table-demo">
+            <div class="class-row header">
+              <span>Day</span><span>Time</span><span>Course</span><span>Type</span>
+            </div>
+            <div class="class-row">
+              <span>Monday</span><span>18:00</span><span>Qur’an Recitation</span><span>1–1</span>
+            </div>
+            <div class="class-row">
+              <span>Wednesday</span><span>18:00</span><span>Tajwīd Rules</span><span>1–1</span>
+            </div>
+            <div class="class-row">
+              <span>Saturday</span><span>10:00</span><span>Hifz Revision</span><span>Group</span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- CLASSES -->
-          <div id="view-classes" class="view">
-            <div class="card soft-elevate fade-in">
-              <h2 class="card-title">Classes</h2>
-              <p class="muted">
-                Here you’ll see your Qur’an, Tajwīd, Arabic and Islamic Studies classes,
-                with timings and links.
-              </p>
-              <div class="placeholder-box">
-                No classes loaded yet. We’ll connect this to your real schedule soon.
-              </div>
-            </div>
+  <!-- ATTENDANCE -->
+  <div id="view-attendance" class="view">
+    <div class="card soft-elevate fade-in">
+      <h2 class="card-title">Attendance</h2>
+      <div class="attendance-grid">
+        <div class="attendance-streak">
+          <div class="streak-circle">
+            <span class="streak-number">0</span>
+            <span class="streak-label">day streak</span>
           </div>
+          <p class="muted">
+            Your attendance streak will appear here once we start tracking it insha’Allah.
+          </p>
+        </div>
+        <div class="attendance-note">
+          <h3>Why attendance matters</h3>
+          <p>
+            The Qur’an is mastered with calm, consistent repetition – not speed.
+            Every class you attend strengthens both your recitation and your heart.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- ATTENDANCE -->
-          <div id="view-attendance" class="view">
-            <div class="card soft-elevate fade-in">
-              <h2 class="card-title">Attendance</h2>
-              <div class="placeholder-box">
-                Attendance history coming soon.
-              </div>
-            </div>
-          </div>
+  <!-- SYLLABUS -->
+  <div id="view-syllabus" class="view">
+    <div class="card soft-elevate fade-in">
+      <h2 class="card-title">Syllabus</h2>
+      <div class="syllabus-box">
+        <p class="muted">
+          Your personal syllabus – surahs, tajwīd topics, Arabic units and Islamic Studies modules –
+          will be available here as downloadable PDFs or checklists.
+        </p>
+        <div class="syll-chip-row">
+          <span class="syll-chip">Qur’an Surah Map</span>
+          <span class="syll-chip">Tajwīd Checklist</span>
+          <span class="syll-chip">Arabic Letters & Words</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- SYLLABUS -->
-          <div id="view-syllabus" class="view">
-            <div class="card soft-elevate fade-in">
-              <h2 class="card-title">Syllabus</h2>
-              <div class="placeholder-box">
-                We’ll show your syllabi here (PDFs, topics, surahs, etc).
-              </div>
-            </div>
-          </div>
-
-          <!-- PROFILE -->
-          <div id="view-profile" class="view">
-            <div class="card soft-elevate fade-in">
-              <h2 class="card-title">Profile</h2>
-              <div id="profileBox" class="placeholder-box"></div>
-            </div>
-          </div>
-        </section>
+  <!-- PROFILE -->
+  <div id="view-profile" class="view">
+    <div class="card soft-elevate fade-in">
+      <h2 class="card-title">Profile</h2>
+      <div id="profileBox" class="profile-box placeholder-box"></div>
+    </div>
+  </div>
+</section>
+<nav class="mobile-bottom-nav">
+  <button class="mobile-tab active" data-view="home">
+    <span class="icon">🏠</span>
+    <span class="label">Home</span>
+  </button>
+  <button class="mobile-tab" data-view="classes">
+    <span class="icon">📅</span>
+    <span class="label">Classes</span>
+  </button>
+  <button class="mobile-tab" data-view="attendance">
+    <span class="icon">✔</span>
+    <span class="label">Attendance</span>
+  </button>
+  <button class="mobile-tab" data-view="syllabus">
+    <span class="icon">📖</span>
+    <span class="label">Syllabus</span>
+  </button>
+  <button class="mobile-tab" data-view="profile">
+    <span class="icon">👤</span>
+    <span class="label">Profile</span>
+  </button>
+</nav>
       </section>
-    </main>
+      </main>
   </div>
 
   <script src="student.js"></script>

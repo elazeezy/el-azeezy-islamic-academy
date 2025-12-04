@@ -6,6 +6,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginErr  = document.getElementById("studentLoginError");
   const logoutBtn = document.getElementById("studentLogoutBtn");
 
+  // ===== Notifications =====
+  const notifBell = document.getElementById("notifBell");
+  const notifPanel = document.getElementById("notifPanel");
+  const notifDot = document.getElementById("notifDot");
+  const notifClearBtn = document.getElementById("notifClearBtn");
+
+  if (notifBell && notifPanel) {
+    notifBell.addEventListener("click", () => {
+      const isHidden = notifPanel.hasAttribute("hidden");
+      if (isHidden) {
+        notifPanel.removeAttribute("hidden");
+      } else {
+        notifPanel.setAttribute("hidden", "true");
+      }
+    });
+  }
+
+  if (notifClearBtn && notifDot) {
+    notifClearBtn.addEventListener("click", () => {
+      notifDot.style.display = "none";
+    });
+  }
+
+  // close notif panel if clicking outside
+  document.addEventListener("click", (e) => {
+    if (!notifPanel || !notifBell) return;
+    if (
+      !notifPanel.contains(e.target) &&
+      !notifBell.contains(e.target)
+    ) {
+      notifPanel.setAttribute("hidden", "true");
+    }
+  });
+
+
     // Initial state: show login, hide dashboard.
   // We will override this below if a saved student exists.
   if (loginView) loginView.style.display = "block";
@@ -75,6 +110,11 @@ function showDashboard(s) {
     }
   initViews();
   renderProfile(s);
+
+      renderProfile(s);
+    renderBadges(s);
+    renderTodayTask(s);
+
 }
   // Handle login form
     if (loginForm) {
@@ -140,31 +180,136 @@ function showDashboard(s) {
   }
 
   // Sidebar navigation
-  function initViews() {
+    function initViews() {
     const links = document.querySelectorAll(".dash-link");
     const views = document.querySelectorAll(".dash-main .view");
+    const mobileTabs = document.querySelectorAll(".mobile-tab");
+
+    function activateView(viewName) {
+      const id = "view-" + viewName;
+
+      // views
+      views.forEach((v) => v.classList.toggle("active", v.id === id));
+
+      // sidebar
+      links.forEach((b) =>
+        b.classList.toggle("active", b.dataset.view === viewName)
+      );
+
+      // mobile
+      mobileTabs.forEach((t) =>
+        t.classList.toggle("active", t.dataset.view === viewName)
+      );
+    }
 
     links.forEach((btn) => {
       btn.addEventListener("click", () => {
-        links.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        const id = "view-" + btn.dataset.view;
-        views.forEach((v) => v.classList.toggle("active", v.id === id));
+        const view = btn.dataset.view;
+        activateView(view);
       });
     });
+
+    mobileTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const view = tab.dataset.view;
+        activateView(view);
+      });
+    });
+
+    // default
+    activateView("home");
   }
 
+
+
   // Profile box (simple for now)
-  function renderProfile(s) {
+    function renderProfile(s) {
     if (!profileBox) return;
+
+    const joined = s.joinedAt
+      ? new Date(s.joinedAt).toLocaleString()
+      : "Unknown";
+
+    const courses = Array.isArray(s.courses) ? s.courses : [];
+
     profileBox.innerHTML = `
       <div><strong>Name:</strong> ${escapeHtml(s.fullName)}</div>
       ${s.phone ? `<div><strong>WhatsApp:</strong> ${escapeHtml(s.phone)}</div>` : ""}
-      <div class="muted" style="margin-top:.5rem">
+      <div><strong>Joined:</strong> ${escapeHtml(joined)}</div>
+      <div style="margin-top:.6rem;"><strong>Enrolled courses:</strong></div>
+      ${
+        courses.length
+          ? `<ul class="profile-course-list">
+               ${courses
+                 .map(
+                   (c) =>
+                     `<li>${escapeHtml(
+                       c.courseName || c.courseId || "Course"
+                     )}</li>`
+                 )
+                 .join("")}
+             </ul>`
+          : `<div class="muted" style="font-size:.85rem;">No courses stored yet. Admin can attach you later insha’Allah.</div>`
+      }
+      <div class="muted" style="margin-top:.7rem">
         We’ll link your real courses, attendance, and syllabus here later insha’Allah.
       </div>
     `;
   }
+
+    function renderBadges(student) {
+    const row = document.getElementById("badgeRow");
+    if (!row) return;
+
+    const badges = [];
+
+    const coursesCount = Array.isArray(student.courses)
+      ? student.courses.length
+      : 0;
+    if (coursesCount >= 2) {
+      badges.push("Multi-course learner ⭐");
+    } else if (coursesCount === 1) {
+      badges.push("Focused learner 🎯");
+    }
+
+    badges.push("Qur’an journey in progress 🌙");
+
+    row.innerHTML =
+      badges
+        .map(
+          (text, idx) =>
+            `<span class="badge-pill ${
+              idx === 0 ? "badge-primary" : "badge-soft"
+            }">${escapeHtml(text)}</span>`
+        )
+        .join("") || row.innerHTML;
+  }
+
+  function renderTodayTask(student) {
+    const mainEl = document.getElementById("todayTaskMain");
+    const subEl = document.getElementById("todayTaskSub");
+    if (!mainEl || !subEl) return;
+
+    const firstCourse =
+      Array.isArray(student.courses) && student.courses[0]
+        ? student.courses[0]
+        : null;
+
+    if (!firstCourse) {
+      mainEl.textContent = "Review any pages you recited in your last class.";
+      subEl.textContent =
+        "If you keep revising, Allah will make the recitation firm in your heart insha’Allah.";
+      return;
+    }
+
+    const courseName = firstCourse.courseName || firstCourse.courseId || "your class";
+
+    mainEl.textContent = `Spend 10–15 minutes revising today’s portion for ${courseName}.`;
+    subEl.textContent =
+      "Read slowly, focus on your tajwīd, and repeat difficult ayāt 5 times.";
+  }
+
+
 
   // ===== Schedule / Next Class logic =====
 
