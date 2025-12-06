@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "studentId": 1,
+    "classSlotId": "slot1",
+    "date": "2025-12-06",
+    "status": "present",
+    "notes": "On time"
+  },
+  {
+    "id": 2,
+    "studentId": 1,
+    "classSlotId": "slot2",
+    "date": "2025-12-08",
+    "status": "present",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "studentId": 2,
+    "classSlotId": "slot3",
+    "date": "2025-12-07",
+    "status": "present",
+    "notes": "Participated actively"
+  }
+]

@@ -295,7 +295,7 @@
 .next-class {
   background:
     radial-gradient(circle at 0 0, rgba(239, 246, 255, 0.16) 0, transparent 55%),
-    linear-gradient(145deg, #020617, #0b274e);
+    linear-gradient(145deg, hsl(240, 9%, 96%), #0b274e);
   border-color: rgba(250, 204, 21, 0.55);
   color: #e5e7eb;
 }
@@ -1194,6 +1194,57 @@
     align-items: flex-start;
   }
 }
+
+.syll-course-block {
+  margin-top: 0.9rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.syll-course-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  margin-bottom: 0.4rem;
+}
+
+.syll-unit-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.syll-unit {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  font-size: 0.86rem;
+}
+
+.syll-unit:first-child {
+  border-top: none;
+}
+
+.syll-unit-title {
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.syll-unit-desc {
+  color: #9ca3af;
+  margin-top: 0.1rem;
+}
+
+.syll-unit-link {
+  font-size: 0.8rem;
+  color: #bfdbfe;
+  white-space: nowrap;
+}
+
 
 
 

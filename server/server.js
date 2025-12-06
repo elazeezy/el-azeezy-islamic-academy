@@ -72,15 +72,30 @@ const PORT = process.env.PORT || 3000;
 const ADMIN_PIN = "2468";
 
 // --- Paths
-const publicDir = path.resolve(__dirname, "../public");
+const publicDir        = path.resolve(__dirname, "../public");
 const registrationsPath = path.resolve(__dirname, "../data/registrations.json");
-const classSlotsPath = path.resolve(__dirname, "../data/classSlots.json");
-const studentsPath = path.resolve(__dirname, "../data/students.json");
+const classSlotsPath    = path.resolve(__dirname, "../data/classSlots.json");
+const studentsPath      = path.resolve(__dirname, "../data/students.json");
 
-// --- Ensure registrations file exists (others you already created)
-if (!fs.existsSync(registrationsPath)) {
-  fs.writeFileSync(registrationsPath, "[]", "utf8");
-}
+// NEW: extra data files
+const attendancePath    = path.resolve(__dirname, "../data/attendance.json");
+const syllabusPath      = path.resolve(__dirname, "../data/syllabus.json");
+const announcementsPath = path.resolve(__dirname, "../data/announcements.json");
+
+// Ensure all JSON data files exist
+[
+  registrationsPath,
+  classSlotsPath,
+  studentsPath,
+  attendancePath,
+  syllabusPath,
+  announcementsPath,
+].forEach((p) => {
+  if (!fs.existsSync(p)) {
+    fs.writeFileSync(p, "[]", "utf8");
+  }
+});
+
 
 // --- Middlewares
 app.use(cors()); // ok for development
@@ -161,14 +176,6 @@ app.post("/api/admin/logout", (req, res) => {
 });
 
 // --- Admin-only: list registrations
-app.get("/api/registrations", (req, res) => {
-  if (!isAuthed(req)) {
-    return res.status(401).json({ success: false, error: "Unauthorized" });
-  }
-  const list = safeReadJson(registrationsPath, []);
-  res.json(list);
-});
-
 // --- NEW: get class slots (for student portal)
 app.get("/api/class-slots", (req, res) => {
   const slots = safeReadJson(classSlotsPath, []);
@@ -181,6 +188,128 @@ app.get("/api/students", (req, res) => {
   res.json(students);
 });
 
+// --- SYLLABUS: read (for student portal)
+app.get("/api/syllabus", (req, res) => {
+  const { courseId } = req.query;
+  let syll = safeReadJson(syllabusPath, []);
+
+  if (courseId) {
+    syll = syll.filter((s) => s.courseId === courseId);
+  }
+
+  res.json(syll);
+});
+
+
+
+// =======================================
+// ATTENDANCE ENDPOINTS (PASTE HERE)
+// =======================================
+app.get("/api/attendance", (req, res) => {
+  const { studentId } = req.query;
+  let records = safeReadJson(attendancePath, []);
+
+  if (studentId) {
+    records = records.filter(
+      (r) => String(r.studentId) === String(studentId)
+    );
+  }
+
+  res.json(records);
+});
+
+app.post("/api/attendance", (req, res) => {
+  if (!isAuthed(req)) {
+    return res.status(401).json({ success: false, error: "Unauthorized" });
+  }
+
+  try {
+    const { studentId, classSlotId, date, status, notes } = req.body || {};
+
+    if (!studentId || !classSlotId || !date || !status) {
+      return res.status(400).json({
+        success: false,
+        error: "studentId, classSlotId, date, and status are required",
+      });
+    }
+
+    const list = safeReadJson(attendancePath, []);
+
+    const entry = {
+      id: Date.now(),
+      studentId,
+      classSlotId,
+      date,   // "2025-12-06"
+      status, // "present" | "absent" | "late"
+      notes: notes || "",
+    };
+
+    list.push(entry);
+    fs.writeFileSync(attendancePath, JSON.stringify(list, null, 2), "utf8");
+
+    res.status(201).json({ success: true, entry });
+  } catch (err) {
+    console.error("Error saving attendance:", err);
+    res.status(500).json({ success: false, error: "Server error." });
+  }
+});
+
+
+// =======================================
+// ANNOUNCEMENTS ENDPOINTS (PASTE HERE)
+// =======================================
+app.get("/api/announcements", (req, res) => {
+  const { audience } = req.query;
+  let anns = safeReadJson(announcementsPath, []);
+
+  if (audience && audience !== "all") {
+    anns = anns.filter(
+      (a) => a.audience === "all" || a.audience === audience
+    );
+  }
+
+  // newest first
+  anns.sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  res.json(anns);
+});
+
+app.post("/api/announcements", (req, res) => {
+  if (!isAuthed(req)) {
+    return res.status(401).json({ success: false, error: "Unauthorized" });
+  }
+
+  try {
+    const { title, message, date, audience } = req.body || {};
+
+    if (!title || !message) {
+      return res.status(400).json({
+        success: false,
+        error: "title and message are required",
+      });
+    }
+
+    const list = safeReadJson(announcementsPath, []);
+
+    const entry = {
+      id: Date.now(),
+      title,
+      message,
+      date: date || new Date().toISOString().slice(0, 10),
+      audience: audience || "all",
+    };
+
+    list.push(entry);
+    fs.writeFileSync(announcementsPath, JSON.stringify(list, null, 2), "utf8");
+
+    res.status(201).json({ success: true, entry });
+  } catch (err) {
+    console.error("Error saving announcement:", err);
+    res.status(500).json({ success: false, error: "Server error." });
+  }
+});
+
+
 // --- Admin page gate: login first
 app.get("/admin", (req, res) => {
   if (isAuthed(req)) {
@@ -188,6 +317,7 @@ app.get("/admin", (req, res) => {
   }
   return res.sendFile(path.join(publicDir, "admin-login.html"));
 });
+
 
 // --- Student portal
 app.get("/student", (req, res) => {

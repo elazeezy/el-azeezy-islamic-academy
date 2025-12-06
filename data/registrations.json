@@ -352,5 +352,78 @@
     "timePreference": "",
     "level": "",
     "paymentPlan": ""
+  },
+  {
+    "id": 1764553712591,
+    "createdAt": "2025-12-01T01:48:32.591Z",
+    "fullName": "ABDUL AZEEZ",
+    "whoFor": "adult",
+    "childNames": "",
+    "adultName": "ABDUL AZEEZ",
+    "email": "abdulazeezidiagbon@gmail.com",
+    "whatsappNumber": "2349031476912",
+    "country": "Malaysia",
+    "goals": "i want to be done in few months..",
+    "courses": [
+      "Qur’an Recitation & Tajwīd",
+      "Qur’an Memorization (Hifz Program)"
+    ],
+    "timePreference": "",
+    "level": "",
+    "paymentPlan": ""
+  },
+  {
+    "id": 1764558738513,
+    "createdAt": "2025-12-01T03:12:18.513Z",
+    "fullName": "ABDUL AZEEZ",
+    "whoFor": "adult",
+    "childNames": "",
+    "adultName": "ABDUL AZEEZ",
+    "email": "abdulazeezidiagbon@gmail.com",
+    "whatsappNumber": "2349031476912",
+    "country": "Malaysia",
+    "goals": "i want to be done in few months..",
+    "courses": [
+      "Qur’an Recitation & Tajwīd",
+      "Islamic Studies"
+    ],
+    "timePreference": "",
+    "level": "",
+    "paymentPlan": ""
+  },
+  {
+    "id": 1764560670483,
+    "createdAt": "2025-12-01T03:44:30.483Z",
+    "fullName": "ABDUL AZEEZ",
+    "whoFor": "adult",
+    "childNames": "",
+    "adultName": "ABDUL AZEEZ",
+    "email": "abdulazeezidiagbon@gmail.com",
+    "whatsappNumber": "2349031476912",
+    "country": "Malaysia",
+    "goals": "i want to be done in few months..",
+    "courses": [
+      "Qur’an Recitation & Tajwīd",
+      "Qur’an Memorization (Hifz Program)"
+    ],
+    "timePreference": "",
+    "level": "",
+    "paymentPlan": ""
+  },
+
+ {
+    "id": 1764232403361,
+    "createdAt": "2025-11-27T08:33:23.361Z",
+    "whoFor": "adult",
+    "childNames": "",
+    "adultName": "Aman Akinde ",
+    "email": "abdulazeezidiagbon@gmail.com",
+    "whatsappNumber": "2349031476912",
+    "country": "Malaysia",
+    "goals": "i want to be done in few months..",
+    "courses": [],
+    "timePreference": "",
+    "level": ""
   }
+
 ]

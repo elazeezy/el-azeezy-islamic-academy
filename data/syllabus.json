@@ -1,0 +1,56 @@
+[
+  {
+    "courseId": "quran-recitation",
+    "title": "Qur’an Recitation & Tajwīd",
+    "units": [
+      {
+        "id": "qr-unit-1",
+        "title": "Arabic Letters & Makharij",
+        "description": "Correct articulation of all letters.",
+        "resourceUrl": "/resources/quran-recitation-unit1.pdf"
+      },
+      {
+        "id": "qr-unit-2",
+        "title": "Short Vowels (Harakāt)",
+        "description": "Fatha, kasrah, dhammah with examples.",
+        "resourceUrl": "/resources/quran-recitation-unit2.pdf"
+      }
+    ]
+  },
+  {
+    "courseId": "quran-hifz",
+    "title": "Qur’an Memorization (Hifz Program)",
+    "units": [
+      {
+        "id": "qh-unit-1",
+        "title": "Juz Amma Memorization",
+        "description": "Memorise with tajwīd focus.",
+        "resourceUrl": "/resources/quran-hifz-unit1.pdf"
+      }
+    ]
+  },
+  {
+    "courseId": "quran-MEMORIZATION",
+    "title": "Qur’an Memorization & Tafseer",
+    "units": [
+      {
+        "id": "qm-unit-1",
+        "title": "Short Surahs & Tafseer",
+        "description": "Memorise short surahs with basic tafseer.",
+        "resourceUrl": "/resources/quran-mem-unit1.pdf"
+      }
+    ]
+  },
+  {
+    "courseId": "islamic-studies",
+    "title": "Islamic Studies & Tajwīd",
+    "units": [
+      {
+        "id": "is-unit-1",
+        "title": "Purification & Salah Basics",
+        "description": "Tahārah, wudū’, and ṣalāh essentials.",
+        "resourceUrl": "/resources/islamic-studies-unit1.pdf"
+      }
+    ]
+  }
+]
