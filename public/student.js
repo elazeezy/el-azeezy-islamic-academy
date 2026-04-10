@@ -178,6 +178,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // 🔥 MOBILE LOGOUT BUTTON
+const mobileLogoutBtn = document.getElementById("mobileLogoutBtn");
+if (mobileLogoutBtn) {
+  mobileLogoutBtn.addEventListener("click", () => {
+    clearStudentFromStorage();
+    clearCountdown();
+    showLogin();
+  });
+}
+
+
   // ===== Sidebar + mobile nav =====
   function initViews() {
     const links = document.querySelectorAll(".dash-link");
