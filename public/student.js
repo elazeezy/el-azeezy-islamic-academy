@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Boot =====
-  if (loginView) loginView.style.display = "block";
-  if (dashView)  dashView.style.display  = "none";
+  if (loginView) loginView.classList.remove("is-hidden");
+  if (dashView)  dashView.classList.add("is-hidden");
 
   const savedStudent = loadStudentFromStorage();
   if (savedStudent?.fullName) {
@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Login =====
   function showLogin() {
-    if (loginView) loginView.style.display = "block";
-    if (dashView)  dashView.style.display  = "none";
+    if (loginView) loginView.classList.remove("is-hidden");
+    if (dashView)  dashView.classList.add("is-hidden");
     window.scrollTo({ top: 0, behavior: "instant" });
 
     const saved = loadStudentFromStorage();
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
         saveStudentToStorage(s);
 
         // Hide login, show welcome overlay
-        if (loginView) loginView.style.display = "none";
+        if (loginView) loginView.classList.add("is-hidden");
         showWelcome(s);
 
       } catch (err) {
@@ -285,8 +285,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== Dashboard =====
   function showDashboard(s) {
 
-    if (loginView) loginView.style.display = "none";
-    if (dashView)  dashView.style.display  = "grid";
+    if (loginView) loginView.classList.add("is-hidden");
+    if (dashView)  dashView.classList.remove("is-hidden");
 
     // Sidebar
     if (nameEl) nameEl.textContent = s.fullName || "Student";

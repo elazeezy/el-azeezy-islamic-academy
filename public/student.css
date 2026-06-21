@@ -49,6 +49,8 @@ a { text-decoration: none; }
 
 .ic-gold { color: var(--gold); }
 
+.is-hidden { display: none !important; }
+
 /* Ambient background blobs */
 .bg-blob {
   position: absolute;
@@ -412,7 +414,11 @@ a { text-decoration: none; }
   justify-content: center;
   min-height: calc(100vh - 58px);
   padding: 2rem 0;
+  gap: 3.5rem;
 }
+
+/* Branding panel — desktop only (see media query below) */
+.login-hero { display: none; }
 
 .login-card {
   background: linear-gradient(145deg, rgba(13,31,60,.92), rgba(6,18,36,.92));
@@ -545,6 +551,69 @@ a { text-decoration: none; }
   text-align: center;
 }
 .login-trust .ic-inline { width: 13px; height: 13px; flex-shrink: 0; }
+
+@media (min-width: 980px) {
+  .login-hero {
+    display: block;
+    max-width: 440px;
+    color: var(--t1);
+    animation: loginIn .55s ease-out;
+  }
+
+  .login-hero-badge {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    background: linear-gradient(135deg, rgba(240,180,41,.2), rgba(240,180,41,.04));
+    border: 1px solid rgba(240,180,41,.32);
+    box-shadow: 0 0 36px rgba(240,180,41,.16);
+    margin-bottom: 1.4rem;
+  }
+  .login-hero-badge .ic { width: 36px; height: 36px; }
+
+  .login-hero-title {
+    font-size: 2.15rem;
+    font-weight: 900;
+    letter-spacing: -.5px;
+    line-height: 1.18;
+    margin-bottom: 1rem;
+  }
+
+  .login-hero-sub {
+    color: var(--t2);
+    font-size: .98rem;
+    line-height: 1.65;
+    margin-bottom: 1.7rem;
+    max-width: 400px;
+  }
+
+  .login-hero-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+  }
+
+  .login-hero-list li {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    color: var(--t2);
+    font-size: .92rem;
+    font-weight: 600;
+  }
+
+  .login-hero-list .ic-inline {
+    width: 18px;
+    height: 18px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+}
 
 /* ==========================================================
    DASHBOARD LAYOUT
