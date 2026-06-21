@@ -21,6 +21,7 @@
     "id": 2,
     "fullName": "Aman Akinde",
     "whatsapp": "+2347037142736" ,
+    "pin": "5555",
     "courses": [
       { 
         "courseId": "quran-MEMORIZATION" , 
@@ -39,6 +40,7 @@
     "id": 3,
     "fullName": "Ameerah Akinde",
     "whatsapp": "+2347037142736" ,
+    "pin": "5555",
     "courses": [
       { 
         "courseId": "quran-MEMORIZATION" , 
@@ -50,7 +52,43 @@
         "courseName": "islamic Studies and tajweed",
         "slotId": "slot6"
       }
+    ]  } ,
+
+{ 
+    "id": 4,
+    "fullName": "Afiyyah Akinde",
+    "whatsapp": "+2347037142736" ,
+    "pin": "5555",
+    "courses": [
+      { 
+        "courseId": "quran-MEMORIZATION" , 
+        "courseName": "Qur'an memorization & Tafseer",
+        "slotId": "slot7"
+      },
+      {
+        "courseId": "islamic-studies",
+        "courseName": "islamic Studies and tajweed",
+        "slotId": "slot8"
+      }
     ]
-  }
+  } ,
+
+{ 
+    "id": 5,
+    "fullName": "Ajmal Akinde",
+    "whatsapp": "+2347037142736" ,
+    "pin": "5555",
+    "courses": [
+      { 
+        "courseId": "quran-MEMORIZATION" , 
+        "courseName": "Qur'an memorization & Tafseer",
+        "slotId": "slot9"
+      },
+      {
+        "courseId": "islamic-studies",
+        "courseName": "islamic Studies and tajweed",
+        "slotId": "slot10"
+      }
+    ]  }
 
 ]

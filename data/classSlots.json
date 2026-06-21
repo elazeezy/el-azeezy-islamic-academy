@@ -28,7 +28,7 @@
     "startTime": "10:00",
     "endTime": "11:30",
     "timezone": "Europe/London",
-    "meetLink": "https://meet.google.com/qyy-hvcr-uxv"
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
   },
 
   {
@@ -38,7 +38,7 @@
     "startTime": "11:30",
     "endTime": "13:00",
     "timezone": "Europe/London",
-    "meetLink": "https://meet.google.com/qyy-hvcr-uxv"
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
   },
 
   {
@@ -48,7 +48,7 @@
     "startTime": "16:00",
     "endTime": "17:30",
     "timezone": "Europe/London",
-    "meetLink": "https://meet.google.com/qyy-hvcr-uxv"
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
   },
 
    {
@@ -58,7 +58,47 @@
     "startTime": "16:00",
     "endTime": "17:30",
     "timezone": "Europe/London",
-    "meetLink": "https://meet.google.com/qyy-hvcr-uxv"
+    "meetLink": "https://meet.google.com/qxs-hyvj-gjp"
+  },
+
+  {
+    "id": "slot7",
+    "name": "weekend Hifz (UTC+0)",
+    "days": ["Saturday", "Sunday"],
+    "startTime": "10:30",
+    "endTime": "11:00",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/zes-fbxc-vkx"
+  },
+
+  {
+    "id": "slot8",
+    "name": "weekdays islamic (UTC+0)",
+    "days": ["Tuesday"],
+    "startTime": "16:00",
+    "endTime": "17:30",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/zes-fbxc-vkx"
+  },
+
+  {
+    "id": "slot9",
+    "name": "weekend Hifz (UTC+0)",
+    "days": ["Saturday", "Sunday"],
+    "startTime": "10:00",
+    "endTime": "10:30",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/zes-fbxc-vkx"
+  },
+
+  {
+    "id": "slot10",
+    "name": "weekend Hifz (UTC+0)",
+    "days": ["Saturday", "Sunday"],
+    "startTime": "11:00",
+    "endTime": "11:30",
+    "timezone": "Europe/London",
+    "meetLink": "https://meet.google.com/zes-fbxc-vkx"
   }
 
 ]

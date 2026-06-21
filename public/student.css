@@ -30,6 +30,55 @@
 button { font-family: inherit; cursor: pointer; }
 a { text-decoration: none; }
 
+/* ==========================================================
+   ICONS (inline Lucide SVGs — sized by context)
+   ========================================================== */
+.ic {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.14em;
+  flex-shrink: 0;
+}
+
+.ic-inline {
+  width: 0.95em;
+  height: 0.95em;
+  vertical-align: -0.15em;
+}
+
+.ic-gold { color: var(--gold); }
+
+/* Ambient background blobs */
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: .55;
+}
+.bg-blob-1 {
+  width: 420px; height: 420px;
+  top: -140px; left: -120px;
+  background: radial-gradient(circle, rgba(29,74,140,.5), transparent 70%);
+  animation: blobDrift1 18s ease-in-out infinite;
+}
+.bg-blob-2 {
+  width: 380px; height: 380px;
+  bottom: -160px; right: -100px;
+  background: radial-gradient(circle, rgba(240,180,41,.22), transparent 70%);
+  animation: blobDrift2 22s ease-in-out infinite;
+}
+@keyframes blobDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(40px, 30px) scale(1.08); }
+}
+@keyframes blobDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-30px, -25px) scale(1.05); }
+}
+
 .student-body {
   min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -40,11 +89,16 @@ a { text-decoration: none; }
 
 .student-bg {
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
   background:
     radial-gradient(ellipse at 15% 0%,   rgba(29,74,140,.22) 0, transparent 52%),
     radial-gradient(ellipse at 85% 100%,  rgba(240,180,41,.05) 0, transparent 48%),
     linear-gradient(160deg, #020b18 0%, #06142a 50%, #020b18 100%);
 }
+
+.student-header,
+.student-shell { position: relative; z-index: 1; }
 
 /* ==========================================================
    WELCOME OVERLAY
@@ -259,24 +313,30 @@ a { text-decoration: none; }
 }
 
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
   color: var(--t2);
   font-size: .85rem;
   font-weight: 500;
   transition: color .18s;
 }
 .nav-link:hover { color: var(--t1); }
+.nav-link .ic-inline { width: 13px; height: 13px; }
 
 .notif-bell {
   background: none;
   border: none;
   padding: .3rem;
-  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
   position: relative;
   line-height: 1;
   color: var(--t2);
-  transition: color .18s;
+  transition: color .18s, transform .18s;
 }
-.notif-bell:hover { color: var(--gold); }
+.notif-bell .ic { width: 18px; height: 18px; }
+.notif-bell:hover { color: var(--gold); transform: scale(1.08); }
 
 .notif-dot {
   position: absolute;
@@ -364,6 +424,12 @@ a { text-decoration: none; }
   box-shadow: var(--shadow), var(--glow);
   text-align: center;
   position: relative;
+  animation: loginIn .55s ease-out;
+}
+
+@keyframes loginIn {
+  from { opacity: 0; transform: translateY(16px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .login-card::before {
@@ -375,7 +441,20 @@ a { text-decoration: none; }
   pointer-events: none;
 }
 
-.login-mosque { font-size: 2.4rem; margin-bottom: .55rem; }
+.login-mosque {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto .9rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  background: linear-gradient(135deg, rgba(240,180,41,.2), rgba(240,180,41,.04));
+  border: 1px solid rgba(240,180,41,.32);
+  box-shadow: 0 0 32px rgba(240,180,41,.16);
+}
+.login-mosque .ic { width: 30px; height: 30px; }
 
 .login-title {
   font-size: 1.7rem;
@@ -458,7 +537,14 @@ a { text-decoration: none; }
   color: var(--t3);
   font-size: .8rem;
   margin-top: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  flex-wrap: wrap;
+  text-align: center;
 }
+.login-trust .ic-inline { width: 13px; height: 13px; flex-shrink: 0; }
 
 /* ==========================================================
    DASHBOARD LAYOUT
@@ -546,7 +632,23 @@ a { text-decoration: none; }
   color: var(--gold);
 }
 
-.di { font-size: .88rem; width: 18px; text-align: center; }
+.di {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.04);
+  transition: background .18s, color .18s;
+}
+.di .ic { width: 16px; height: 16px; }
+
+.dash-link.active .di,
+.dash-link:hover .di {
+  background: rgba(240,180,41,.14);
+  color: var(--gold);
+}
 
 .sidebar-footer {
   border-top: 1px solid rgba(255,255,255,.06);
@@ -556,6 +658,10 @@ a { text-decoration: none; }
 .sidebar-logout {
   width: 100%;
   padding: .52rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.09);
   color: var(--t2);
@@ -565,6 +671,7 @@ a { text-decoration: none; }
   margin-bottom: .7rem;
   transition: all .18s;
 }
+.sidebar-logout .ic-inline { width: 14px; height: 14px; }
 
 .sidebar-logout:hover {
   background: rgba(248,113,113,.1);
@@ -578,6 +685,7 @@ a { text-decoration: none; }
   font-style: italic;
   line-height: 1.55;
 }
+.sidebar-hadith .ic-inline { color: var(--gold); margin-right: .1rem; }
 
 /* ==========================================================
    MAIN AREA
@@ -628,12 +736,15 @@ a { text-decoration: none; }
 .badge-row { display: flex; flex-wrap: wrap; gap: .4rem; }
 
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
   padding: .28rem .72rem;
   border-radius: 999px;
   font-size: .76rem;
   font-weight: 700;
 }
+.badge .ic { width: 12px; height: 12px; }
 
 .badge-gold {
   background: rgba(240,180,41,.12);
@@ -726,7 +837,9 @@ a { text-decoration: none; }
   padding: .95rem 1rem;
   box-shadow: var(--shadow);
   flex: 1;
+  transition: border-color .2s, transform .15s;
 }
+.stat-card:hover { border-color: var(--border-h); transform: translateY(-2px); }
 
 .stat-label {
   font-size: .68rem;
@@ -777,7 +890,8 @@ a { text-decoration: none; }
 
 .quick-card:hover { border-color: var(--border-h); transform: translateY(-2px); }
 
-.qc-icon { font-size: 1.4rem; display: block; margin-bottom: .28rem; line-height: 1; }
+.qc-icon { display: flex; align-items: center; justify-content: center; margin-bottom: .4rem; color: var(--gold); }
+.qc-icon .ic { width: 22px; height: 22px; }
 .qc-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--t3); margin-bottom: .15rem; }
 .qc-val { font-size: .8rem; font-weight: 700; color: var(--t2); }
 
@@ -960,7 +1074,8 @@ a { text-decoration: none; }
 
 .mobile-tab.active { color: var(--gold); }
 
-.mob-icon { font-size: 1.15rem; line-height: 1; }
+.mob-icon { display: flex; align-items: center; justify-content: center; }
+.mob-icon .ic { width: 19px; height: 19px; }
 .mob-lbl  { font-size: .6rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
 
 /* Mobile-only utility */

@@ -1,4 +1,46 @@
+// ===== Inline Lucide icons (no CDN — self-contained, no network dependency) =====
+const ICON_PATHS = {
+  bell:            '<path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/>',
+  home:            '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  "calendar-days": '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>',
+  "check-circle":  '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+  "book-open":     '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  user:            '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  "log-out":       '<path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>',
+  "arrow-right":   '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  "arrow-left":    '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+  "moon-star":     '<path d="M18 5h4"/><path d="M20 3v4"/><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>',
+  globe:           '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  target:          '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  mic:             '<path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/>',
+  lightbulb:       '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+  hand:            '<path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>',
+  flame:           '<path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/>',
+  sprout:          '<path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/>',
+  sparkles:        '<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/>',
+  rocket:          '<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/>',
+  clock:           '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  "play-circle":   '<path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z"/><circle cx="12" cy="12" r="10"/>',
+  star:            '<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>',
+  lock:            '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+};
+
+function icon(name, extraClass) {
+  const d = ICON_PATHS[name];
+  if (!d) return "";
+  return `<svg class="ic${extraClass ? " " + extraClass : ""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+}
+
+function renderIcons(root) {
+  (root || document).querySelectorAll("[data-icon]").forEach((el) => {
+    el.innerHTML = icon(el.dataset.icon, el.dataset.iconClass);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Convert every static data-icon placeholder in the markup into a real SVG icon
+  renderIcons(document);
 
   // ===== Element refs =====
   const loginView    = document.getElementById("studentLogin");
@@ -123,6 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const fullNameInput = document.getElementById("studentNameInput").value.trim();
       const phoneInput    = document.getElementById("studentPhoneInput").value.trim();
+      const pinEl         = document.getElementById("studentPinInput");
+      const pinInput      = pinEl ? pinEl.value.trim() : "";
 
       if (!fullNameInput) {
         if (loginErr) loginErr.textContent = "Please enter your name.";
@@ -140,6 +184,12 @@ document.addEventListener("DOMContentLoaded", () => {
             loginErr.textContent =
               "We couldn't find your name. Please book your free assessment on the main website first.";
           }
+          return;
+        }
+
+        // PIN is optional — only checked if the student has one set AND they typed one in.
+        if (student.pin && pinInput && pinInput !== student.pin) {
+          if (loginErr) loginErr.textContent = "That PIN doesn't look right. Leave it blank if you're not sure.";
           return;
         }
 
@@ -167,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const firstName = (student.fullName || "Student").split(" ")[0];
 
     // Populate
-    if (greetNameEl) greetNameEl.textContent = firstName + "! 🌙";
+    if (greetNameEl) greetNameEl.innerHTML = escapeHtml(firstName) + "! " + icon("moon-star", "ic-inline ic-gold");
     if (greetDateEl) greetDateEl.textContent  = formatDate();
 
     // Reset steps
@@ -195,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (yesBtn) {
       yesBtn.onclick = () => {
         if (readyStep)    readyStep.classList.add("hidden");
-        if (responseTextEl) responseTextEl.textContent = "Bismillah, let's go! 🚀";
+        if (responseTextEl) responseTextEl.innerHTML = "Bismillah, let's go! " + icon("rocket", "ic-inline ic-gold");
         if (responseStep) responseStep.classList.remove("hidden");
         setTimeout(() => closeWelcomeAndEnter(student), 1700);
       };
@@ -205,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (noBtn) {
       noBtn.onclick = () => {
         if (readyStep)    readyStep.classList.add("hidden");
-        if (responseTextEl) responseTextEl.textContent = "Hmm, Ustaz is waiting tho 😅";
+        if (responseTextEl) responseTextEl.innerHTML = "Hmm, Ustaz is waiting tho " + icon("clock", "ic-inline ic-gold");
         if (responseStep) responseStep.classList.remove("hidden");
         setTimeout(() => closeWelcomeAndEnter(student), 2000);
       };
@@ -321,12 +371,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const badges = [];
     const count  = Array.isArray(student.courses) ? student.courses.length : 0;
 
-    if (count >= 2)     badges.push({ label: "Multi-course learner ⭐", cls: "badge-gold" });
-    else if (count === 1) badges.push({ label: "Focused learner 🎯",    cls: "badge-gold" });
+    if (count >= 2)     badges.push({ label: "Multi-course learner", iconName: "star",   cls: "badge-gold" });
+    else if (count === 1) badges.push({ label: "Focused learner",    iconName: "target", cls: "badge-gold" });
 
-    badges.push({ label: "Qur'an journey 🌙", cls: "badge-soft" });
+    badges.push({ label: "Qur'an journey", iconName: "moon-star", cls: "badge-soft" });
 
-    row.innerHTML = badges.map(b => `<span class="badge ${b.cls}">${escapeHtml(b.label)}</span>`).join("");
+    row.innerHTML = badges.map(b =>
+      `<span class="badge ${b.cls}">${icon(b.iconName, "ic-inline")} ${escapeHtml(b.label)}</span>`
+    ).join("");
   }
 
   // ===== Today's task =====
@@ -442,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function tick() {
       let diff = target - Date.now();
       if (diff <= 0) {
-        countdownEl.textContent = "Class time! 🟢";
+        countdownEl.innerHTML = "Class time! " + icon("play-circle", "ic-inline ic-gold");
         clearCountdown();
         return;
       }

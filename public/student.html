@@ -76,7 +76,7 @@
       <div id="readyStep" class="wc-step hidden">
         <p class="wc-question">Are you ready for today's class?</p>
         <div class="wc-btns">
-          <button id="yesBtn" class="wc-btn wc-yes">Yes! ✨</button>
+          <button id="yesBtn" class="wc-btn wc-yes">Yes! <span class="ic-inline" data-icon="sparkles"></span></button>
           <button id="noBtn" class="wc-btn wc-no">Not really…</button>
         </div>
       </div>
@@ -84,7 +84,9 @@
       <!-- Step 3: Response -->
       <div id="responseStep" class="wc-step hidden">
         <p id="responseText" class="wc-response"></p>
-        <button id="continueDashBtn" class="wc-continue">Enter My Dashboard →</button>
+        <button id="continueDashBtn" class="wc-continue">
+          Enter My Dashboard <span class="ic-inline" data-icon="arrow-right"></span>
+        </button>
       </div>
 
     </div>
@@ -92,6 +94,8 @@
 
   <!-- ===== PAGE WRAPPER ===== -->
   <div class="student-bg">
+    <div class="bg-blob bg-blob-1" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob-2" aria-hidden="true"></div>
 
     <!-- HEADER -->
     <header class="student-header">
@@ -102,10 +106,10 @@
         </div>
         <div class="header-actions">
           <button class="notif-bell" id="notifBell" aria-label="Notifications">
-            <span>🔔</span>
+            <span data-icon="bell"></span>
             <span class="notif-dot" id="notifDot"></span>
           </button>
-          <a class="nav-link" href="/">← Website</a>
+          <a class="nav-link" href="/"><span class="ic-inline" data-icon="arrow-left"></span> Website</a>
         </div>
       </div>
     </header>
@@ -127,7 +131,7 @@
       <!-- ===== LOGIN VIEW ===== -->
       <section id="studentLogin" class="login-wrapper">
         <div class="login-card">
-          <div class="login-mosque">🕌</div>
+          <div class="login-mosque" data-icon="moon-star"></div>
           <h1 class="login-title">Welcome Back</h1>
           <p class="login-sub">Enter your name to access your dashboard.</p>
 
@@ -144,11 +148,23 @@
               <input id="studentPhoneInput" name="whatsapp" type="text"
                      placeholder="+23480XXXXXXX"/>
             </div>
-            <button class="login-btn" type="submit">Enter My Dashboard →</button>
+            <div class="field-group">
+              <label class="field-label" for="studentPinInput">
+                PIN <span class="field-opt">(optional — ask your parent if unsure)</span>
+              </label>
+              <input id="studentPinInput" name="pin" type="password" inputmode="numeric"
+                     pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off"/>
+            </div>
+            <button class="login-btn" type="submit">
+              Enter My Dashboard <span class="ic-inline" data-icon="arrow-right"></span>
+            </button>
           </form>
 
           <p id="studentLoginError" class="login-error"></p>
-          <p class="login-trust">Trusted by families in 🇳🇬 🇬🇧 🇨🇦 🇲🇾</p>
+          <p class="login-trust">
+            <span class="ic-inline" data-icon="globe"></span>
+            Trusted by families across Nigeria, the UK, Canada &amp; Malaysia
+          </p>
         </div>
       </section>
 
@@ -168,25 +184,30 @@
 
           <nav class="dash-nav">
             <button data-view="home" class="dash-link active">
-              <span class="di">🏠</span> Dashboard
+              <span class="di" data-icon="home"></span> Dashboard
             </button>
             <button data-view="classes" class="dash-link">
-              <span class="di">📅</span> Classes
+              <span class="di" data-icon="calendar-days"></span> Classes
             </button>
             <button data-view="attendance" class="dash-link">
-              <span class="di">✅</span> Attendance
+              <span class="di" data-icon="check-circle"></span> Attendance
             </button>
             <button data-view="syllabus" class="dash-link">
-              <span class="di">📖</span> Syllabus
+              <span class="di" data-icon="book-open"></span> Syllabus
             </button>
             <button data-view="profile" class="dash-link">
-              <span class="di">👤</span> Profile
+              <span class="di" data-icon="user"></span> Profile
             </button>
           </nav>
 
           <div class="sidebar-footer">
-            <button id="studentLogoutBtn" class="sidebar-logout">Log Out</button>
-            <p class="sidebar-hadith">"The best of you are those who learn the Qur'an and teach it." 📖</p>
+            <button id="studentLogoutBtn" class="sidebar-logout">
+              <span class="ic-inline" data-icon="log-out"></span> Log Out
+            </button>
+            <p class="sidebar-hadith">
+              <span class="ic-inline" data-icon="book-open"></span>
+              "The best of you are those who learn the Qur'an and teach it."
+            </p>
           </div>
         </aside>
 
@@ -202,7 +223,7 @@
                 <p class="home-date" id="homeDate"></p>
               </div>
               <div id="badgeRow" class="badge-row">
-                <span class="badge badge-gold">Qur'an journey 🌙</span>
+                <span class="badge badge-gold"><span class="ic-inline" data-icon="moon-star"></span> Qur'an journey</span>
               </div>
             </div>
 
@@ -214,7 +235,9 @@
                 <p class="card-eyebrow">NEXT CLASS</p>
                 <div class="countdown" id="countdown">Loading…</div>
                 <p class="next-label" id="nextClassLabel">Fetching your schedule…</p>
-                <button id="joinClassBtn" class="btn-join" disabled>Join Class →</button>
+                <button id="joinClassBtn" class="btn-join" disabled>
+                  Join Class <span class="ic-inline" data-icon="arrow-right"></span>
+                </button>
               </div>
 
               <!-- STATS COLUMN -->
@@ -222,7 +245,7 @@
                 <div class="stat-card">
                   <p class="stat-label">Attendance Streak</p>
                   <div class="stat-big streak-number">0</div>
-                  <p class="stat-sub">classes in a row 🔥</p>
+                  <p class="stat-sub">classes in a row <span class="ic-inline" data-icon="flame"></span></p>
                 </div>
                 <div class="stat-card">
                   <p class="stat-label">Today's Task</p>
@@ -236,22 +259,22 @@
             <!-- Quick tips row -->
             <div class="quick-row fade-in">
               <div class="quick-card">
-                <span class="qc-icon">🎯</span>
+                <span class="qc-icon" data-icon="target"></span>
                 <p class="qc-label">Goal</p>
                 <p class="qc-val">3× / week</p>
               </div>
               <div class="quick-card">
-                <span class="qc-icon">🗣️</span>
+                <span class="qc-icon" data-icon="mic"></span>
                 <p class="qc-label">Focus</p>
                 <p class="qc-val">Tajwīd</p>
               </div>
               <div class="quick-card">
-                <span class="qc-icon">🤫</span>
+                <span class="qc-icon" data-icon="lightbulb"></span>
                 <p class="qc-label">Tip</p>
                 <p class="qc-val">No distractions</p>
               </div>
               <div class="quick-card">
-                <span class="qc-icon">🤲</span>
+                <span class="qc-icon" data-icon="hand"></span>
                 <p class="qc-label">Begin</p>
                 <p class="qc-val">Bismillah</p>
               </div>
@@ -297,7 +320,7 @@
                   <span class="streak-lbl">day streak</span>
                 </div>
                 <p class="muted" style="margin-top:.75rem;text-align:center;">
-                  Keep attending and your streak grows insha'Allah 🌱
+                  Keep attending and your streak grows insha'Allah <span class="ic-inline" data-icon="sprout"></span>
                 </p>
               </div>
               <div class="card att-note-card">
@@ -349,7 +372,7 @@
             <!-- Mobile-only logout in profile view -->
             <div class="mobile-only" style="margin-top:1rem;">
               <button id="mobileLogoutBtn" class="sidebar-logout" style="width:100%;padding:.75rem;">
-                Log Out
+                <span class="ic-inline" data-icon="log-out"></span> Log Out
               </button>
             </div>
           </div>
@@ -359,23 +382,23 @@
         <!-- MOBILE BOTTOM NAV -->
         <nav class="mobile-bottom-nav">
           <button class="mobile-tab active" data-view="home">
-            <span class="mob-icon">🏠</span>
+            <span class="mob-icon" data-icon="home"></span>
             <span class="mob-lbl">Home</span>
           </button>
           <button class="mobile-tab" data-view="classes">
-            <span class="mob-icon">📅</span>
+            <span class="mob-icon" data-icon="calendar-days"></span>
             <span class="mob-lbl">Classes</span>
           </button>
           <button class="mobile-tab" data-view="attendance">
-            <span class="mob-icon">✅</span>
+            <span class="mob-icon" data-icon="check-circle"></span>
             <span class="mob-lbl">Attend</span>
           </button>
           <button class="mobile-tab" data-view="syllabus">
-            <span class="mob-icon">📖</span>
+            <span class="mob-icon" data-icon="book-open"></span>
             <span class="mob-lbl">Syllabus</span>
           </button>
           <button class="mobile-tab" data-view="profile">
-            <span class="mob-icon">👤</span>
+            <span class="mob-icon" data-icon="user"></span>
             <span class="mob-lbl">Profile</span>
           </button>
         </nav>
